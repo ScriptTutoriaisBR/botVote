@@ -1,0 +1,44 @@
+{
+	// Obrigatório
+	"manifest_version": 2,
+	"name": "botVote",
+	"version": "0.0.1",
+
+	// Descrição da nossa extensão
+	"description": "Sistema de votos altomáticos",
+
+	// Íconea da nossa extensão
+	"icons": {
+		"48": "48x48.png",
+		"120": "120x120.png"
+	},
+
+	// Utilizaremos as "Page Actions" e registramos isso aqui
+    "page_action": {
+        "default_icon": { 
+            "36" : "36x36.png",
+            "48" : "48x48.png"
+        },
+        "default_title": "botVote",
+        "default_popup": "index.html"
+    },
+
+    // Aqui declaramos as permirsões que precisamos
+    "permissions": [ 
+        "tabs",
+        "declarativeContent"
+    ],
+
+    // Utilizaremos uma "Event Page" (note o persistent: false)
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    //* Injetaremos esses arquivos quando "match" ocorrer*/
+    "content_scripts": [ {
+        "js": [ "inject/botVote.js"],
+        "css": [ "inject/botVote.css" ],
+        "matches": [ "http://*.localhost/*" ]
+    } ]
+}
